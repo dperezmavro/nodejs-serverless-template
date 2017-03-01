@@ -1,0 +1,21 @@
+
+service: exampleTemplateService
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+  region: eu-west-1
+  cflogs: true
+  timeout: 50
+  memorySize: 128
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - sns:*
+        - cloudwatch:*
+        - events:*
+      Resource: "*"
+
+functions:
+  main:
+    handler: main.main
