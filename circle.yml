@@ -1,0 +1,23 @@
+machine:
+  services:
+    - docker
+  node:
+      version: 6.10.1
+
+dependencies:
+  override:
+    - npm install
+    - npm install -g serverless
+
+test:
+  pre:
+    - npm install npm-check
+  override:
+    - ./node_modules/.bin/npm-check --skip-unused
+    - npm test
+
+deployment:
+  concourse:
+    branch: master
+    commands:
+      - npm run deploy
