@@ -1,11 +1,11 @@
 
-service: exampleTemplateService
+service: exampleService
 
 provider:
   name: aws
   runtime: nodejs4.3
   region: eu-west-1
-  cflogs: true
+  cfLogs: true
   timeout: 50
   memorySize: 128
   iamRoleStatements:
@@ -19,3 +19,9 @@ provider:
 functions:
   main:
     handler: main.main
+
+resources:
+  Resources:
+    MainLogGroup:
+      Properties:
+        RetentionInDays: "14"
