@@ -1,12 +1,9 @@
 const path = require('path');
-var nodeExternals = require('webpack-node-externals');
 
 module.exports = {
   target: 'node',
   externals: [
-    nodeExternals({
-      modulesDir: './node_modules/'
-    })
+    'aws-sdk'
   ],
   entry: './main.js',
   output:{
