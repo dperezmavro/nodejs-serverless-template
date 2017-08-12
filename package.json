@@ -1,12 +1,14 @@
 {
-  "name": "webhook_test",
+  "name": "lambda-serverless-template",
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
   "scripts": {
     "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha",
-    "deploy": "npm test && npm run make && cd build && sls deploy",
-    "make": "rm -rf ./build && mkdir build && cp serverless.yml  build/ && ./node_modules/.bin/webpack -p ",
+    "deploy": "npm test && npm run make && cd build && serverless deploy",
+    "invoke:local": "npm run make && cd build && serverless invoke local --function functionName",
+    "invoke": "npm run make && cd build && serverless invoke --function functionName",
+    "make": "rm -rf ./build && mkdir build && cp serverless.yml build/ && ./node_modules/.bin/webpack -p",
     "test": "./node_modules/mocha/bin/mocha"
   },
   "author": "",
